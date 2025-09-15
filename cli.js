@@ -17,7 +17,7 @@ import {
   generateReactFlowData,
   generateFileFlowData,
 } from "./utils/reactFlowGenerator.js";
-import { extractRoutes } from "./utils/fileparser.js";
+import { extractRoutes } from "./utils/fileParser.js";
 import readline from "readline/promises";
 import { stdin as input, stdout as output } from "process";
 
