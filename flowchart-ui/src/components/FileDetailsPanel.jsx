@@ -2,18 +2,19 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/fileDetails.css";
-import { fetchExplanation, fetchSuggestion } from "../utils/api";
+import { fetchExplanation, fetchSuggestion, fetchRefactor } from "../utils/api";
 
 export default function FileDetailsPanel({
   symbol,
   fileNode,
   onClose,
-  onEdit,
+  onEdit, // opens CodeEditorDrawer with path + code
 }) {
   const [explanation, setExplanation] = useState("");
   const [suggestion, setSuggestion] = useState("");
   const [loadingExplain, setLoadingExplain] = useState(false);
   const [loadingSuggest, setLoadingSuggest] = useState(false);
+  const [loadingRefactor, setLoadingRefactor] = useState(false);
 
   const data = symbol ? symbol.data : fileNode?.data;
 
@@ -53,7 +54,21 @@ export default function FileDetailsPanel({
     }
   };
 
-  // Helper: format suggestion into multiple lines
+  // ✅ Apply refactor → calls backend and opens editor with optimized code
+  const handleRefactor = async () => {
+    if (!data?.code && !data?.snippet) return;
+    setLoadingRefactor(true);
+    try {
+      const result = await fetchRefactor(data.code || data.snippet);
+      onEdit(data?.absPath || data?.relPath, result.refactoredCode);
+    } catch (err) {
+      console.error("❌ Refactor fetch error:", err);
+      alert("❌ Failed to refactor code.");
+    } finally {
+      setLoadingRefactor(false);
+    }
+  };
+
   const renderSuggestion = (text) => {
     if (!text) return "No suggestion available.";
     const currentMatch = text.match(/Current:([^.]*)/i);
@@ -62,9 +77,21 @@ export default function FileDetailsPanel({
 
     return (
       <div>
-        {currentMatch && <p><strong>Current:</strong> {currentMatch[1].trim()}</p>}
-        {betterMatch && <p><strong>Better:</strong> {betterMatch[1].trim()}</p>}
-        {suggestMatch && <p><strong>Suggestion:</strong> {suggestMatch[1].trim()}</p>}
+        {currentMatch && (
+          <p>
+            <strong>Current:</strong> {currentMatch[1].trim()}
+          </p>
+        )}
+        {betterMatch && (
+          <p>
+            <strong>Better:</strong> {betterMatch[1].trim()}
+          </p>
+        )}
+        {suggestMatch && (
+          <p>
+            <strong>Suggestion:</strong> {suggestMatch[1].trim()}
+          </p>
+        )}
         {!currentMatch && !suggestMatch && <p>{text}</p>}
       </div>
     );
@@ -124,14 +151,33 @@ export default function FileDetailsPanel({
             )}
           </div>
 
-          {/* Suggestion */}
-          <div className="card">
+          {/* Suggestion + Apply Button */}
+          <div
+            className="card suggestion-card"
+            style={{ borderRadius: "8px", padding: "12px" }}
+          >
             <h4 className="card-title">AI Suggestion</h4>
             {loadingSuggest ? (
               <p>⏳ Analyzing complexity...</p>
             ) : (
               renderSuggestion(suggestion)
             )}
+            <button
+              className="apply-btn"
+              onClick={handleRefactor}
+              disabled={loadingRefactor}
+              style={{
+                marginTop: "10px",
+                backgroundColor: "#16a34a", // ✅ green
+                color: "#fff",
+                border: "none",
+                padding: "8px 14px",
+                borderRadius: "6px", // ✅ curved
+                cursor: "pointer",
+              }}
+            >
+              {loadingRefactor ? "⏳ Applying..." : "</>  Apply "}
+            </button>
           </div>
         </motion.aside>
       )}

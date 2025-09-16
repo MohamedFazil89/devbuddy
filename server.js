@@ -127,6 +127,45 @@ const openai = new OpenAI({
 //   }
 // });
 
+// ✅ AI Refactor API (analyzes + optimizes, returns only best code)
+// ✅ AI Refactor API (analyzes + optimizes, returns only best code)
+// app.post("/api/refactor", async (req, res) => {
+//   try {
+//     const { code } = req.body;
+//     if (!code) return res.status(400).json({ error: "Missing code snippet" });
+
+//     // Ask AI to analyze + refactor
+//     const response = await openai.chat.completions.create({
+//       model: "gpt-4o-mini",
+//       messages: [
+//         {
+//           role: "system",
+//           content:
+//             "You are a strict code reviewer. First, analyze the given code for its time/space complexity. " +
+//             "Then rewrite it in the most efficient way possible. " +
+//             "Return ONLY the optimized code. Do not include explanations, markdown, or JSON wrapper.",
+//         },
+//         {
+//           role: "user",
+//           content: code,
+//         },
+//       ],
+//       max_tokens: 500,
+//     });
+
+//     const optimizedCode = response.choices[0].message.content.trim();
+
+//     // 🔍 Logs
+//     console.log("🔎 Refactor Request Received");
+//     console.log("📥 Original Code:\n", code);
+//     console.log("✨ Optimized Code Generated:\n", optimizedCode);
+
+//     res.json({ refactoredCode: optimizedCode });
+//   } catch (err) {
+//     console.error("❌ Error in /api/refactor:", err.response?.data || err.message);
+//     res.status(500).json({ error: "Failed to refactor code" });
+//   }
+// });
 
 
 

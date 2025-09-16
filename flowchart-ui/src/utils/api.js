@@ -49,6 +49,26 @@ export async function fetchSuggestion(code) {
   return data;
 }
 
+// ✅ AI Refactor (returns optimized code only)
+export async function fetchRefactor(code) {
+  const res = await fetch(`${API_BASE}/api/refactor`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error("❌ Backend refactor error:", text);
+    throw new Error("Failed to fetch refactored code");
+  }
+
+  const data = await res.json();
+  console.log("📩 Refactor response from backend:", data);
+  return data; // { refactoredCode: "optimized code here" }
+}
+
+
 export async function updateCode(filePath, newCode) {
   console.log("🔧 updateCode called:", filePath);
   const res = await fetch(`${API_BASE}/api/code/update`, {
