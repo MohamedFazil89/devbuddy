@@ -63,3 +63,10 @@ export async function undoCode(filePath) {
 
   return res.json();
 }
+
+
+export async function fetchFileFunctions(fileId) {
+  const res = await fetch(`${API_BASE}/api/functions?file=${encodeURIComponent(fileId)}`);
+  const data = await res.json();
+  return data.functions;
+}

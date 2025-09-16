@@ -13,7 +13,8 @@ export default function FileDetailsPanel({
   const [explanation, setExplanation] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const data = symbol ? symbol.data : fileNode?.data;
+const data = symbol ? symbol.data : fileNode?.data;
+const filePath = fileNode?.data?.relPath || fileNode?.data?.absPath || "unknown";
 
   useEffect(() => {
     if (data) handleExplain();
@@ -49,7 +50,7 @@ export default function FileDetailsPanel({
             <div>
               <h3>{data?.label || data?.name || "File"}</h3>
               <div className="muted">
-                {data?.relPath || data?.absPath || "unknown"}
+                {filePath}
               </div>
             </div>
             <button onClick={onClose} className="close-btn">

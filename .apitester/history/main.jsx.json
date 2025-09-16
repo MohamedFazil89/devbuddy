@@ -1,0 +1,6 @@
+[
+  {
+    "timestamp": 1757986866396,
+    "code": "import React from \"react\";\r\nimport ReactDOM from \"react-dom/client\";\r\nimport App from \"./App\";\r\nimport { BrowserRouter as Router } from \"react-router-dom\";\r\n\r\nReactDOM.createRoot(document.getElementById(\"root\")).render(\r\n  <React.StrictMode>\r\n    <Router>\r\n      <App />\r\n    </Router>\r\n  </React.StrictMode>\r\n);"
+  }
+]
