@@ -1,0 +1,18 @@
+[
+  {
+    "method": "post",
+    "path": "/profile",
+    "case": "Test Case 1: Fetch profile",
+    "payload": {
+      "userId": "12345",
+      "token": "my-secret-token-987"
+    },
+    "status": 200
+  },
+  {
+    "method": "get",
+    "path": "/profile",
+    "case": "GET",
+    "status": 200
+  }
+]

@@ -1,0 +1,2143 @@
+{
+  "nodes": [
+    {
+      "id": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "type": "fileNode",
+      "position": {
+        "x": 150,
+        "y": 80
+      },
+      "data": {
+        "label": "App.jsx",
+        "relPath": "sample\\frontend\\src\\App.jsx",
+        "summary": "Components: App • Routes: {\"path\":\"/\",\"element\":\"AdminLogin\"}; {\"path\":\"/dashboard\",\"element\":\"AddStudent\"}; {\"path\":\"/attendance\",\"element\":\"Attendance\"}; {\"path\":\"/students\",\"element\":\"StudentList\"}; {\"path\":\"/poll-summary\",\"element\":\"PollSummary\"}",
+        "symbols": {
+          "components": [
+            {
+              "id": "sample\\frontend\\src\\App.jsx::component::App",
+              "name": "App",
+              "kind": "function",
+              "start": 580,
+              "end": 1023,
+              "code": "function App() {\n  return (\n    <ThemeProvider theme={theme}>\n      <CssBaseline />\n      <Routes>\n        <Route path=\"/\" element={<AdminLogin />} />\n        <Route path=\"/dashboard\" element={<AddStudent />} />\n        <Route path=\"/attendance\" element={<Attendance />} />\n        <Route path=\"/students\" element={<StudentList />} />\n        <Route path=\"/poll-summary\" element={<PollSummary />} />\n      </Routes>\n    </ThemeProvider>\n  );\n}"
+            }
+          ],
+          "hooks": [],
+          "contexts": []
+        },
+        "uses": [
+          {
+            "name": "ThemeProvider"
+          },
+          {
+            "name": "CssBaseline"
+          },
+          {
+            "name": "Routes"
+          },
+          {
+            "name": "Route"
+          },
+          {
+            "name": "AdminLogin"
+          },
+          {
+            "name": "Route"
+          },
+          {
+            "name": "AddStudent"
+          },
+          {
+            "name": "Route"
+          },
+          {
+            "name": "Attendance"
+          },
+          {
+            "name": "Route"
+          },
+          {
+            "name": "StudentList"
+          },
+          {
+            "name": "Route"
+          },
+          {
+            "name": "PollSummary"
+          }
+        ],
+        "imports": [
+          {
+            "source": "react",
+            "specifiers": [
+              {
+                "local": "React",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "react-router-dom",
+            "specifiers": [
+              {
+                "local": "Routes",
+                "imported": "Routes"
+              },
+              {
+                "local": "Route",
+                "imported": "Route"
+              }
+            ]
+          },
+          {
+            "source": "./components/AdminLogin",
+            "specifiers": [
+              {
+                "local": "AdminLogin",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "./pages/AddStudent",
+            "specifiers": [
+              {
+                "local": "AddStudent",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "./pages/Attendance",
+            "specifiers": [
+              {
+                "local": "Attendance",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "./components/StudentList",
+            "specifiers": [
+              {
+                "local": "StudentList",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "./pages/PollSummary",
+            "specifiers": [
+              {
+                "local": "PollSummary",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "@mui/material/styles",
+            "specifiers": [
+              {
+                "local": "ThemeProvider",
+                "imported": "ThemeProvider"
+              },
+              {
+                "local": "createTheme",
+                "imported": "createTheme"
+              }
+            ]
+          },
+          {
+            "source": "@mui/material/CssBaseline",
+            "specifiers": [
+              {
+                "local": "CssBaseline",
+                "imported": "default"
+              }
+            ]
+          }
+        ],
+        "providers": [],
+        "routes": [
+          {
+            "props": {
+              "path": "/",
+              "element": "AdminLogin"
+            }
+          },
+          {
+            "props": {
+              "path": "/dashboard",
+              "element": "AddStudent"
+            }
+          },
+          {
+            "props": {
+              "path": "/attendance",
+              "element": "Attendance"
+            }
+          },
+          {
+            "props": {
+              "path": "/students",
+              "element": "StudentList"
+            }
+          },
+          {
+            "props": {
+              "path": "/poll-summary",
+              "element": "PollSummary"
+            }
+          }
+        ],
+        "code": "import React from \"react\";\nimport { Routes, Route } from \"react-router-dom\";\nimport AdminLogin from \"./components/AdminLogin\";\nimport AddStudent from \"./pages/AddStudent\";\nimport Attendance from \"./pages/Attendance\";\nimport StudentList from \"./components/StudentList\";\nimport PollSummary from \"./pages/PollSummary\";\nimport { ThemeProvider, createTheme } from \"@mui/material/styles\";\nimport CssBaseline from \"@mui/material/CssBaseline\";\n\nconst theme = createTheme({\n  palette: {\n    primary: {\n      main: \"#007BFF\",\n    },\n    secondary: {\n      main: \"#28A745\",\n    },\n  },\n});\n\nfunction App() {\n  return (\n    <ThemeProvider theme={theme}>\n      <CssBaseline />\n      <Routes>\n        <Route path=\"/\" element={<AdminLogin />} />\n        <Route path=\"/dashboard\" element={<AddStudent />} />\n        <Route path=\"/attendance\" element={<Attendance />} />\n        <Route path=\"/students\" element={<StudentList />} />\n        <Route path=\"/poll-summary\" element={<PollSummary />} />\n      </Routes>\n    </ThemeProvider>\n  );\n}\n\nexport default App;"
+      }
+    },
+    {
+      "id": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx",
+      "type": "fileNode",
+      "position": {
+        "x": 470,
+        "y": 80
+      },
+      "data": {
+        "label": "AdminLogin.jsx",
+        "relPath": "sample\\frontend\\src\\components\\AdminLogin.jsx",
+        "summary": "Components: AdminLogin",
+        "symbols": {
+          "components": [
+            {
+              "id": "sample\\frontend\\src\\components\\AdminLogin.jsx::component::AdminLogin",
+              "name": "AdminLogin",
+              "kind": "function",
+              "start": 215,
+              "end": 2656,
+              "code": "function AdminLogin() {\n  const [credentials, setCredentials] = useState({ email: \"\", password: \"\" });\n  const [error, setError] = useState(\"\");\n  const navigate = useNavigate();\n\n  const handleLogin = async () => {\n    try {\n      const res = await fetch(\"http://localhost:5000/admin-login\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify(credentials),\n      });\n\n      const data = await res.json();\n\n      if (res.status === 200) {\n        navigate(\"/dashboard\"); // Redirect after success\n      } else {\n        setError(data.message || \"Invalid credentials\");\n      }\n    } catch (err) {\n      setError(\"Server error, try again later\");\n    }\n  };\n\n  return (\n    <Box\n      sx={{\n        minHeight: \"100vh\",\n        display: \"fle…"
+            }
+          ],
+          "hooks": [],
+          "contexts": []
+        },
+        "uses": [
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useNavigate"
+          },
+          {
+            "name": "Box"
+          },
+          {
+            "name": "Container"
+          },
+          {
+            "name": "Paper"
+          },
+          {
+            "name": "Box"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "TextField"
+          },
+          {
+            "name": "TextField"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "Button"
+          }
+        ],
+        "imports": [
+          {
+            "source": "react",
+            "specifiers": [
+              {
+                "local": "React",
+                "imported": "default"
+              },
+              {
+                "local": "useState",
+                "imported": "useState"
+              }
+            ]
+          },
+          {
+            "source": "react-router-dom",
+            "specifiers": [
+              {
+                "local": "useNavigate",
+                "imported": "useNavigate"
+              }
+            ]
+          },
+          {
+            "source": "@mui/material",
+            "specifiers": [
+              {
+                "local": "Container",
+                "imported": "Container"
+              },
+              {
+                "local": "Typography",
+                "imported": "Typography"
+              },
+              {
+                "local": "TextField",
+                "imported": "TextField"
+              },
+              {
+                "local": "Button",
+                "imported": "Button"
+              },
+              {
+                "local": "Paper",
+                "imported": "Paper"
+              },
+              {
+                "local": "Box",
+                "imported": "Box"
+              }
+            ]
+          },
+          {
+            "source": "../assets/logo.png",
+            "specifiers": [
+              {
+                "local": "logo",
+                "imported": "default"
+              }
+            ]
+          }
+        ],
+        "providers": [],
+        "routes": [],
+        "code": "import React, { useState } from \"react\";\nimport { useNavigate } from \"react-router-dom\";\nimport { Container, Typography, TextField, Button, Paper, Box } from \"@mui/material\";\nimport logo from \"../assets/logo.png\";\n\nfunction AdminLogin() {\n  const [credentials, setCredentials] = useState({ email: \"\", password: \"\" });\n  const [error, setError] = useState(\"\");\n  const navigate = useNavigate();\n\n  const handleLogin = async () => {\n    try {\n      const res = await fetch(\"http://localhost:5000/admin-login\", {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify(credentials),\n      });\n\n      const data = await res.json();\n\n      if (res.status === 200) {\n        navigate(\"/dashboard\"); // Redirect after success\n      } else {\n        setError(data.message || \"Invalid credentials\");\n      }\n    } catch (err) {\n      setError(\"Server error, try again later\");\n    }\n  };\n\n  return (\n    <Box\n      sx={{\n        minHeight: \"100vh\",\n        display: \"flex\",\n        alignItems: \"center\",\n        justifyContent: \"center\",\n        background: \"white\",\n      }}\n    >\n      <Container maxWidth=\"xs\">\n        <Paper elevation={6} sx={{ p: 4, …"
+      }
+    },
+    {
+      "id": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "type": "fileNode",
+      "position": {
+        "x": 790,
+        "y": 80
+      },
+      "data": {
+        "label": "Navbar.jsx",
+        "relPath": "sample\\frontend\\src\\components\\Navbar.jsx",
+        "summary": "Components: Navbar",
+        "symbols": {
+          "components": [
+            {
+              "id": "sample\\frontend\\src\\components\\Navbar.jsx::component::Navbar",
+              "name": "Navbar",
+              "kind": "function",
+              "start": 339,
+              "end": 2899,
+              "code": "function Navbar() {\n  const [mobileOpen, setMobileOpen] = useState(false);\n\n  const handleDrawerToggle = () => {\n    setMobileOpen(!mobileOpen);\n  };\n\n  return (\n    <>\n      <AppBar position=\"static\" sx={{ backgroundColor: \"#2C3930\" }}>\n        <Toolbar>\n          {/* Mobile Menu Button */}\n          <IconButton\n            color=\"inherit\"\n            edge=\"start\"\n            onClick={handleDrawerToggle}\n            sx={{ display: { xs: \"block\", md: \"none\" } }}\n          >\n            <MenuIcon />\n          </IconButton>\n\n          {/* Logo and Title */}\n          <Box sx={{ flexGrow: 1, display: \"flex\", alignItems: \"center\" }}>\n            <img src={logo} alt=\"Logo\" style={{ height: 50, marginRight: 10 }} />\n            <Typography\n              variant=\"h6\"\n              component={Link…"
+            }
+          ],
+          "hooks": [],
+          "contexts": []
+        },
+        "uses": [
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "AppBar"
+          },
+          {
+            "name": "Toolbar"
+          },
+          {
+            "name": "IconButton"
+          },
+          {
+            "name": "MenuIcon"
+          },
+          {
+            "name": "Box"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "Box"
+          },
+          {
+            "name": "Button"
+          },
+          {
+            "name": "Button"
+          },
+          {
+            "name": "Button"
+          },
+          {
+            "name": "Button"
+          },
+          {
+            "name": "Drawer"
+          },
+          {
+            "name": "List"
+          },
+          {
+            "name": "ListItem"
+          },
+          {
+            "name": "ListItemText"
+          },
+          {
+            "name": "ListItem"
+          },
+          {
+            "name": "ListItemText"
+          },
+          {
+            "name": "ListItem"
+          },
+          {
+            "name": "ListItemText"
+          },
+          {
+            "name": "ListItem"
+          },
+          {
+            "name": "ListItemText"
+          },
+          {
+            "name": "ListItem"
+          },
+          {
+            "name": "ListItemText"
+          }
+        ],
+        "imports": [
+          {
+            "source": "react",
+            "specifiers": [
+              {
+                "local": "React",
+                "imported": "default"
+              },
+              {
+                "local": "useState",
+                "imported": "useState"
+              }
+            ]
+          },
+          {
+            "source": "@mui/material",
+            "specifiers": [
+              {
+                "local": "AppBar",
+                "imported": "AppBar"
+              },
+              {
+                "local": "Toolbar",
+                "imported": "Toolbar"
+              },
+              {
+                "local": "Typography",
+                "imported": "Typography"
+              },
+              {
+                "local": "Button",
+                "imported": "Button"
+              },
+              {
+                "local": "Box",
+                "imported": "Box"
+              },
+              {
+                "local": "IconButton",
+                "imported": "IconButton"
+              },
+              {
+                "local": "Drawer",
+                "imported": "Drawer"
+              },
+              {
+                "local": "List",
+                "imported": "List"
+              },
+              {
+                "local": "ListItem",
+                "imported": "ListItem"
+              },
+              {
+                "local": "ListItemText",
+                "imported": "ListItemText"
+              }
+            ]
+          },
+          {
+            "source": "@mui/icons-material/Menu",
+            "specifiers": [
+              {
+                "local": "MenuIcon",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "react-router-dom",
+            "specifiers": [
+              {
+                "local": "Link",
+                "imported": "Link"
+              }
+            ]
+          },
+          {
+            "source": "../assets/logo.png",
+            "specifiers": [
+              {
+                "local": "logo",
+                "imported": "default"
+              }
+            ]
+          }
+        ],
+        "providers": [],
+        "routes": [],
+        "code": "import React, { useState } from \"react\";\nimport { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, ListItem, ListItemText } from \"@mui/material\";\nimport MenuIcon from \"@mui/icons-material/Menu\";\nimport { Link } from \"react-router-dom\";\nimport logo from \"../assets/logo.png\"; // Ensure your logo is in the assets folder\n\nfunction Navbar() {\n  const [mobileOpen, setMobileOpen] = useState(false);\n\n  const handleDrawerToggle = () => {\n    setMobileOpen(!mobileOpen);\n  };\n\n  return (\n    <>\n      <AppBar position=\"static\" sx={{ backgroundColor: \"#2C3930\" }}>\n        <Toolbar>\n          {/* Mobile Menu Button */}\n          <IconButton\n            color=\"inherit\"\n            edge=\"start\"\n            onClick={handleDrawerToggle}\n            sx={{ display: { xs: \"block\", md: \"none\" } }}\n          >\n            <MenuIcon />\n          </IconButton>\n\n          {/* Logo and Title */}\n          <Box sx={{ flexGrow: 1, display: \"flex\", alignItems: \"center\" }}>\n            <img src={logo} alt=\"Logo\" style={{ height: 50, marginRight: 10 }} />\n            <Typography\n              variant=\"h6\"\n              component={Link}\n              to=\"/dashboard\"\n              sx={{ textDecor…"
+      }
+    },
+    {
+      "id": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx",
+      "type": "fileNode",
+      "position": {
+        "x": 1110,
+        "y": 80
+      },
+      "data": {
+        "label": "StudentList.jsx",
+        "relPath": "sample\\frontend\\src\\components\\StudentList.jsx",
+        "summary": "Components: StudentList",
+        "symbols": {
+          "components": [
+            {
+              "id": "sample\\frontend\\src\\components\\StudentList.jsx::component::StudentList",
+              "name": "StudentList",
+              "kind": "function",
+              "start": 349,
+              "end": 4213,
+              "code": "function StudentList() {\n  const [students, setStudents] = useState([]);\n  const [filterDepartment, setFilterDepartment] = useState(\"\");\n  const navigate = useNavigate();\n\n  // Fetch all students from the backend\n  const fetchStudents = async () => {\n    try {\n      const response = await axios.get(\"http://localhost:5000/students\");\n      setStudents(response.data);\n    } catch (error) {\n      console.error(\"Error fetching students:\", error);\n      alert(\"Failed to fetch students.\");\n    }\n  };\n\n  // Fetch students on component mount\n  useEffect(() => {\n    fetchStudents();\n  }, []);\n\n  // Delete a student and re-generate QR codes for remaining students\n  const handleDelete = async (registerNumber) => {\n    try {\n      // Delete the student\n      await axios.delete(`http://localhost:5000/d…"
+            }
+          ],
+          "hooks": [],
+          "contexts": []
+        },
+        "uses": [
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useNavigate"
+          },
+          {
+            "name": "hook:useEffect"
+          },
+          {
+            "name": "Navbar"
+          },
+          {
+            "name": "Container"
+          },
+          {
+            "name": "Paper"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "Box"
+          },
+          {
+            "name": "TextField"
+          },
+          {
+            "name": "Button"
+          },
+          {
+            "name": "TableContainer"
+          },
+          {
+            "name": "Table"
+          },
+          {
+            "name": "TableHead"
+          },
+          {
+            "name": "TableRow"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableBody"
+          },
+          {
+            "name": "TableRow"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "Button"
+          },
+          {
+            "name": "Box"
+          },
+          {
+            "name": "Button"
+          }
+        ],
+        "imports": [
+          {
+            "source": "react",
+            "specifiers": [
+              {
+                "local": "React",
+                "imported": "default"
+              },
+              {
+                "local": "useEffect",
+                "imported": "useEffect"
+              },
+              {
+                "local": "useState",
+                "imported": "useState"
+              }
+            ]
+          },
+          {
+            "source": "axios",
+            "specifiers": [
+              {
+                "local": "axios",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "react-router-dom",
+            "specifiers": [
+              {
+                "local": "useNavigate",
+                "imported": "useNavigate"
+              }
+            ]
+          },
+          {
+            "source": "@mui/material",
+            "specifiers": [
+              {
+                "local": "Container",
+                "imported": "Container"
+              },
+              {
+                "local": "Typography",
+                "imported": "Typography"
+              },
+              {
+                "local": "Table",
+                "imported": "Table"
+              },
+              {
+                "local": "TableBody",
+                "imported": "TableBody"
+              },
+              {
+                "local": "TableCell",
+                "imported": "TableCell"
+              },
+              {
+                "local": "TableContainer",
+                "imported": "TableContainer"
+              },
+              {
+                "local": "TableHead",
+                "imported": "TableHead"
+              },
+              {
+                "local": "TableRow",
+                "imported": "TableRow"
+              },
+              {
+                "local": "Paper",
+                "imported": "Paper"
+              },
+              {
+                "local": "TextField",
+                "imported": "TextField"
+              },
+              {
+                "local": "Button",
+                "imported": "Button"
+              },
+              {
+                "local": "Box",
+                "imported": "Box"
+              }
+            ]
+          },
+          {
+            "source": "../components/Navbar",
+            "specifiers": [
+              {
+                "local": "Navbar",
+                "imported": "default"
+              }
+            ]
+          }
+        ],
+        "providers": [],
+        "routes": [],
+        "code": "import React, { useEffect, useState } from \"react\";\nimport axios from \"axios\";\nimport { useNavigate } from \"react-router-dom\";\nimport {\n  Container,\n  Typography,\n  Table,\n  TableBody,\n  TableCell,\n  TableContainer,\n  TableHead,\n  TableRow,\n  Paper,\n  TextField,\n  Button,\n  Box,\n} from \"@mui/material\";\nimport Navbar from \"../components/Navbar\"; \n\nfunction StudentList() {\n  const [students, setStudents] = useState([]);\n  const [filterDepartment, setFilterDepartment] = useState(\"\");\n  const navigate = useNavigate();\n\n  // Fetch all students from the backend\n  const fetchStudents = async () => {\n    try {\n      const response = await axios.get(\"http://localhost:5000/students\");\n      setStudents(response.data);\n    } catch (error) {\n      console.error(\"Error fetching students:\", error);\n      alert(\"Failed to fetch students.\");\n    }\n  };\n\n  // Fetch students on component mount\n  useEffect(() => {\n    fetchStudents();\n  }, []);\n\n  // Delete a student and re-generate QR codes for remaining students\n  const handleDelete = async (registerNumber) => {\n    try {\n      // Delete the student\n      await axios.delete(`http://localhost:5000/delete-student/${registerNumber}`);\n      alert(\"Stu…"
+      }
+    },
+    {
+      "id": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx",
+      "type": "fileNode",
+      "position": {
+        "x": 1430,
+        "y": 80
+      },
+      "data": {
+        "label": "main.jsx",
+        "relPath": "sample\\frontend\\src\\main.jsx",
+        "summary": "",
+        "symbols": {
+          "components": [],
+          "hooks": [],
+          "contexts": []
+        },
+        "uses": [
+          {
+            "name": "React.StrictMode"
+          },
+          {
+            "name": "Router"
+          },
+          {
+            "name": "App"
+          }
+        ],
+        "imports": [
+          {
+            "source": "react",
+            "specifiers": [
+              {
+                "local": "React",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "react-dom/client",
+            "specifiers": [
+              {
+                "local": "ReactDOM",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "./App",
+            "specifiers": [
+              {
+                "local": "App",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "react-router-dom",
+            "specifiers": [
+              {
+                "local": "Router",
+                "imported": "BrowserRouter"
+              }
+            ]
+          }
+        ],
+        "providers": [],
+        "routes": [],
+        "code": "import React from \"react\";\nimport ReactDOM from \"react-dom/client\";\nimport App from \"./App\";\nimport { BrowserRouter as Router } from \"react-router-dom\";\n\nReactDOM.createRoot(document.getElementById(\"root\")).render(\n  <React.StrictMode>\n    <Router>\n      <App />\n    </Router>\n  </React.StrictMode>\n);"
+      }
+    },
+    {
+      "id": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx",
+      "type": "fileNode",
+      "position": {
+        "x": 150,
+        "y": 300
+      },
+      "data": {
+        "label": "AddStudent.jsx",
+        "relPath": "sample\\frontend\\src\\pages\\AddStudent.jsx",
+        "summary": "Components: AddStudent",
+        "symbols": {
+          "components": [
+            {
+              "id": "sample\\frontend\\src\\pages\\AddStudent.jsx::component::AddStudent",
+              "name": "AddStudent",
+              "kind": "function",
+              "start": 282,
+              "end": 4621,
+              "code": "function AddStudent() {\n  const [student, setStudent] = useState({\n    name: \"\",\n    registerNumber: \"\",\n    department: \"\",\n    shift: \"\",\n  });\n  const [qrCode, setQrCode] = useState(\"\");\n  const [qrMessage, setQrMessage] = useState(\"\");\n\n  // Fetch QR automatically\n  const fetchQr = async () => {\n    try {\n      const response = await axios.get(\"http://localhost:5000/generate-qr\");\n      setQrCode(response.data.qrCode);\n      setQrMessage(\"\");\n    } catch (error) {\n      setQrCode(\"\");\n      setQrMessage(\"QR code is only available between 1 PM and 3 PM\");\n    }\n  };\n\n  // Run once on load + refresh every minute\n  useEffect(() => {\n    fetchQr();\n    const interval = setInterval(fetchQr, 60000); // refresh every 60 sec\n    return () => clearInterval(interval);\n  }, []);\n\n  const handleAd…"
+            }
+          ],
+          "hooks": [],
+          "contexts": []
+        },
+        "uses": [
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useEffect"
+          },
+          {
+            "name": "Navbar"
+          },
+          {
+            "name": "Container"
+          },
+          {
+            "name": "Paper"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "TextField"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "TextField"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "FormControl"
+          },
+          {
+            "name": "InputLabel"
+          },
+          {
+            "name": "Select"
+          },
+          {
+            "name": "MenuItem"
+          },
+          {
+            "name": "MenuItem"
+          },
+          {
+            "name": "MenuItem"
+          },
+          {
+            "name": "MenuItem"
+          },
+          {
+            "name": "MenuItem"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "FormControl"
+          },
+          {
+            "name": "InputLabel"
+          },
+          {
+            "name": "Select"
+          },
+          {
+            "name": "MenuItem"
+          },
+          {
+            "name": "MenuItem"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "Button"
+          },
+          {
+            "name": "Box"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "Typography"
+          }
+        ],
+        "imports": [
+          {
+            "source": "react",
+            "specifiers": [
+              {
+                "local": "React",
+                "imported": "default"
+              },
+              {
+                "local": "useState",
+                "imported": "useState"
+              },
+              {
+                "local": "useEffect",
+                "imported": "useEffect"
+              }
+            ]
+          },
+          {
+            "source": "axios",
+            "specifiers": [
+              {
+                "local": "axios",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "@mui/material",
+            "specifiers": [
+              {
+                "local": "Container",
+                "imported": "Container"
+              },
+              {
+                "local": "Typography",
+                "imported": "Typography"
+              },
+              {
+                "local": "TextField",
+                "imported": "TextField"
+              },
+              {
+                "local": "Button",
+                "imported": "Button"
+              },
+              {
+                "local": "Grid",
+                "imported": "Grid"
+              },
+              {
+                "local": "Box",
+                "imported": "Box"
+              },
+              {
+                "local": "Paper",
+                "imported": "Paper"
+              },
+              {
+                "local": "Select",
+                "imported": "Select"
+              },
+              {
+                "local": "MenuItem",
+                "imported": "MenuItem"
+              },
+              {
+                "local": "FormControl",
+                "imported": "FormControl"
+              },
+              {
+                "local": "InputLabel",
+                "imported": "InputLabel"
+              }
+            ]
+          },
+          {
+            "source": "../components/Navbar",
+            "specifiers": [
+              {
+                "local": "Navbar",
+                "imported": "default"
+              }
+            ]
+          }
+        ],
+        "providers": [],
+        "routes": [],
+        "code": "import React, { useState, useEffect } from \"react\";\nimport axios from \"axios\";\nimport {\n  Container,\n  Typography,\n  TextField,\n  Button,\n  Grid,\n  Box,\n  Paper,\n  Select,\n  MenuItem,\n  FormControl,\n  InputLabel,\n} from \"@mui/material\";\nimport Navbar from \"../components/Navbar\"; \n\nfunction AddStudent() {\n  const [student, setStudent] = useState({\n    name: \"\",\n    registerNumber: \"\",\n    department: \"\",\n    shift: \"\",\n  });\n  const [qrCode, setQrCode] = useState(\"\");\n  const [qrMessage, setQrMessage] = useState(\"\");\n\n  // Fetch QR automatically\n  const fetchQr = async () => {\n    try {\n      const response = await axios.get(\"http://localhost:5000/generate-qr\");\n      setQrCode(response.data.qrCode);\n      setQrMessage(\"\");\n    } catch (error) {\n      setQrCode(\"\");\n      setQrMessage(\"QR code is only available between 1 PM and 3 PM\");\n    }\n  };\n\n  // Run once on load + refresh every minute\n  useEffect(() => {\n    fetchQr();\n    const interval = setInterval(fetchQr, 60000); // refresh every 60 sec\n    return () => clearInterval(interval);\n  }, []);\n\n  const handleAddStudent = async () => {\n    try {\n      await axios.post(\"http://localhost:5000/add-student\", student);\n      alert(\"…"
+      }
+    },
+    {
+      "id": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx",
+      "type": "fileNode",
+      "position": {
+        "x": 470,
+        "y": 300
+      },
+      "data": {
+        "label": "Attendance.jsx",
+        "relPath": "sample\\frontend\\src\\pages\\Attendance.jsx",
+        "summary": "Components: Attendance",
+        "symbols": {
+          "components": [
+            {
+              "id": "sample\\frontend\\src\\pages\\Attendance.jsx::component::Attendance",
+              "name": "Attendance",
+              "kind": "function",
+              "start": 334,
+              "end": 3321,
+              "code": "function Attendance() {\n  const [attendance, setAttendance] = useState([]);\n  const [filterDate, setFilterDate] = useState(new Date().toISOString().split(\"T\")[0]); // Default to today's date\n  const [filterRegisterNumber, setFilterRegisterNumber] = useState(\"\"); // Register Number filter\n  const navigate = useNavigate();\n\n  useEffect(() => {\n    const fetchAttendance = async () => {\n      const response = await axios.get(\"http://localhost:5000/attendance\");\n      setAttendance(response.data);\n    };\n    fetchAttendance();\n  }, []);\n\n  // Filtering based on Date and Register Number\n  const filteredAttendance = attendance.filter((record) =>\n    (filterDate ? record.date === filterDate : true) &&\n    (filterRegisterNumber ? record.registerNumber.includes(filterRegisterNumber) : true)\n  );\n\n  …"
+            }
+          ],
+          "hooks": [],
+          "contexts": []
+        },
+        "uses": [
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useNavigate"
+          },
+          {
+            "name": "hook:useEffect"
+          },
+          {
+            "name": "Navbar"
+          },
+          {
+            "name": "Container"
+          },
+          {
+            "name": "Paper"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "Box"
+          },
+          {
+            "name": "TextField"
+          },
+          {
+            "name": "TextField"
+          },
+          {
+            "name": "TableContainer"
+          },
+          {
+            "name": "Table"
+          },
+          {
+            "name": "TableHead"
+          },
+          {
+            "name": "TableRow"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableBody"
+          },
+          {
+            "name": "TableRow"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "Box"
+          },
+          {
+            "name": "Button"
+          }
+        ],
+        "imports": [
+          {
+            "source": "react",
+            "specifiers": [
+              {
+                "local": "React",
+                "imported": "default"
+              },
+              {
+                "local": "useEffect",
+                "imported": "useEffect"
+              },
+              {
+                "local": "useState",
+                "imported": "useState"
+              }
+            ]
+          },
+          {
+            "source": "axios",
+            "specifiers": [
+              {
+                "local": "axios",
+                "imported": "default"
+              }
+            ]
+          },
+          {
+            "source": "react-router-dom",
+            "specifiers": [
+              {
+                "local": "useNavigate",
+                "imported": "useNavigate"
+              }
+            ]
+          },
+          {
+            "source": "@mui/material",
+            "specifiers": [
+              {
+                "local": "Container",
+                "imported": "Container"
+              },
+              {
+                "local": "Typography",
+                "imported": "Typography"
+              },
+              {
+                "local": "Table",
+                "imported": "Table"
+              },
+              {
+                "local": "TableBody",
+                "imported": "TableBody"
+              },
+              {
+                "local": "TableCell",
+                "imported": "TableCell"
+              },
+              {
+                "local": "TableContainer",
+                "imported": "TableContainer"
+              },
+              {
+                "local": "TableHead",
+                "imported": "TableHead"
+              },
+              {
+                "local": "TableRow",
+                "imported": "TableRow"
+              },
+              {
+                "local": "Paper",
+                "imported": "Paper"
+              },
+              {
+                "local": "Button",
+                "imported": "Button"
+              },
+              {
+                "local": "TextField",
+                "imported": "TextField"
+              },
+              {
+                "local": "Box",
+                "imported": "Box"
+              }
+            ]
+          },
+          {
+            "source": "../components/Navbar",
+            "specifiers": [
+              {
+                "local": "Navbar",
+                "imported": "default"
+              }
+            ]
+          }
+        ],
+        "providers": [],
+        "routes": [],
+        "code": "import React, { useEffect, useState } from \"react\";\nimport axios from \"axios\";\nimport { useNavigate } from \"react-router-dom\";\nimport { \n  Container, Typography, Table, TableBody, TableCell, \n  TableContainer, TableHead, TableRow, Paper, Button, \n  TextField, Box \n} from \"@mui/material\";\nimport Navbar from \"../components/Navbar\"; \n\nfunction Attendance() {\n  const [attendance, setAttendance] = useState([]);\n  const [filterDate, setFilterDate] = useState(new Date().toISOString().split(\"T\")[0]); // Default to today's date\n  const [filterRegisterNumber, setFilterRegisterNumber] = useState(\"\"); // Register Number filter\n  const navigate = useNavigate();\n\n  useEffect(() => {\n    const fetchAttendance = async () => {\n      const response = await axios.get(\"http://localhost:5000/attendance\");\n      setAttendance(response.data);\n    };\n    fetchAttendance();\n  }, []);\n\n  // Filtering based on Date and Register Number\n  const filteredAttendance = attendance.filter((record) =>\n    (filterDate ? record.date === filterDate : true) &&\n    (filterRegisterNumber ? record.registerNumber.includes(filterRegisterNumber) : true)\n  );\n\n  return (\n    <>\n    <Navbar />\n    <Container maxWidth=\"lg\" sx={{ …"
+      }
+    },
+    {
+      "id": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx",
+      "type": "fileNode",
+      "position": {
+        "x": 790,
+        "y": 300
+      },
+      "data": {
+        "label": "PollSummary.jsx",
+        "relPath": "sample\\frontend\\src\\pages\\PollSummary.jsx",
+        "summary": "Components: PollSummary",
+        "symbols": {
+          "components": [
+            {
+              "id": "sample\\frontend\\src\\pages\\PollSummary.jsx::component::PollSummary",
+              "name": "PollSummary",
+              "kind": "function",
+              "start": 346,
+              "end": 4625,
+              "code": "function PollSummary() {\n  const [pollData, setPollData] = useState([]);\n  const [count, setCount] = useState(0);\n  const [date, setDate] = useState(new Date().toISOString().split(\"T\")[0]); // default today\n\n  useEffect(() => {\n    fetchPollSummary(date);\n  }, [date]);\n\n  const fetchPollSummary = async (selectedDate) => {\n    try {\n      const res = await fetch(`http://localhost:5000/poll-summary/${selectedDate}`);\n      const data = await res.json();\n      setPollData(data.students || []);\n      setCount(data.count || 0);\n    } catch (err) {\n      console.error(\"Error fetching poll summary:\", err);\n    }\n  };\n\n  const chartData = [\n    { name: \"YES\", value: count },\n    { name: \"NO\", value: pollData.length > 0 ? pollData.length - count : 0 },\n  ];\n\n  const COLORS = [\"#4CAF50\", \"#F44336\"];…"
+            }
+          ],
+          "hooks": [],
+          "contexts": []
+        },
+        "uses": [
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useState"
+          },
+          {
+            "name": "hook:useEffect"
+          },
+          {
+            "name": "Navbar"
+          },
+          {
+            "name": "Container"
+          },
+          {
+            "name": "Paper"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "TextField"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "Button"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "Paper"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "Grid"
+          },
+          {
+            "name": "PieChart"
+          },
+          {
+            "name": "Pie"
+          },
+          {
+            "name": "Cell"
+          },
+          {
+            "name": "Tooltip"
+          },
+          {
+            "name": "Legend"
+          },
+          {
+            "name": "Box"
+          },
+          {
+            "name": "Typography"
+          },
+          {
+            "name": "TableContainer"
+          },
+          {
+            "name": "Table"
+          },
+          {
+            "name": "TableHead"
+          },
+          {
+            "name": "TableRow"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableBody"
+          },
+          {
+            "name": "TableRow"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableCell"
+          },
+          {
+            "name": "TableRow"
+          },
+          {
+            "name": "TableCell"
+          }
+        ],
+        "imports": [
+          {
+            "source": "react",
+            "specifiers": [
+              {
+                "local": "React",
+                "imported": "default"
+              },
+              {
+                "local": "useEffect",
+                "imported": "useEffect"
+              },
+              {
+                "local": "useState",
+                "imported": "useState"
+              }
+            ]
+          },
+          {
+            "source": "@mui/material",
+            "specifiers": [
+              {
+                "local": "Container",
+                "imported": "Container"
+              },
+              {
+                "local": "Typography",
+                "imported": "Typography"
+              },
+              {
+                "local": "Paper",
+                "imported": "Paper"
+              },
+              {
+                "local": "Table",
+                "imported": "Table"
+              },
+              {
+                "local": "TableBody",
+                "imported": "TableBody"
+              },
+              {
+                "local": "TableCell",
+                "imported": "TableCell"
+              },
+              {
+                "local": "TableContainer",
+                "imported": "TableContainer"
+              },
+              {
+                "local": "TableHead",
+                "imported": "TableHead"
+              },
+              {
+                "local": "TableRow",
+                "imported": "TableRow"
+              },
+              {
+                "local": "Button",
+                "imported": "Button"
+              },
+              {
+                "local": "TextField",
+                "imported": "TextField"
+              },
+              {
+                "local": "Grid",
+                "imported": "Grid"
+              },
+              {
+                "local": "Box",
+                "imported": "Box"
+              }
+            ]
+          },
+          {
+            "source": "recharts",
+            "specifiers": [
+              {
+                "local": "PieChart",
+                "imported": "PieChart"
+              },
+              {
+                "local": "Pie",
+                "imported": "Pie"
+              },
+              {
+                "local": "Cell",
+                "imported": "Cell"
+              },
+              {
+                "local": "Tooltip",
+                "imported": "Tooltip"
+              },
+              {
+                "local": "Legend",
+                "imported": "Legend"
+              }
+            ]
+          },
+          {
+            "source": "../components/Navbar",
+            "specifiers": [
+              {
+                "local": "Navbar",
+                "imported": "default"
+              }
+            ]
+          }
+        ],
+        "providers": [],
+        "routes": [],
+        "code": "import React, { useEffect, useState } from \"react\";\nimport {\n  Container,\n  Typography,\n  Paper,\n  Table,\n  TableBody,\n  TableCell,\n  TableContainer,\n  TableHead,\n  TableRow,\n  Button,\n  TextField,\n  Grid,\n  Box,\n} from \"@mui/material\";\nimport { PieChart, Pie, Cell, Tooltip, Legend } from \"recharts\";\nimport Navbar from \"../components/Navbar\";\n\nfunction PollSummary() {\n  const [pollData, setPollData] = useState([]);\n  const [count, setCount] = useState(0);\n  const [date, setDate] = useState(new Date().toISOString().split(\"T\")[0]); // default today\n\n  useEffect(() => {\n    fetchPollSummary(date);\n  }, [date]);\n\n  const fetchPollSummary = async (selectedDate) => {\n    try {\n      const res = await fetch(`http://localhost:5000/poll-summary/${selectedDate}`);\n      const data = await res.json();\n      setPollData(data.students || []);\n      setCount(data.count || 0);\n    } catch (err) {\n      console.error(\"Error fetching poll summary:\", err);\n    }\n  };\n\n  const chartData = [\n    { name: \"YES\", value: count },\n    { name: \"NO\", value: pollData.length > 0 ? pollData.length - count : 0 },\n  ];\n\n  const COLORS = [\"#4CAF50\", \"#F44336\"];\n\n  return (\n    <>\n      <Navbar />\n      <Container …"
+      }
+    },
+    {
+      "id": "pkg:react",
+      "type": "packageNode",
+      "position": {
+        "x": 20,
+        "y": 420
+      },
+      "data": {
+        "label": "react",
+        "description": "external package"
+      }
+    },
+    {
+      "id": "pkg:react-router-dom",
+      "type": "packageNode",
+      "position": {
+        "x": 20,
+        "y": 470
+      },
+      "data": {
+        "label": "react-router-dom",
+        "description": "external package"
+      }
+    },
+    {
+      "id": "pkg:@mui/material/styles",
+      "type": "packageNode",
+      "position": {
+        "x": 20,
+        "y": 520
+      },
+      "data": {
+        "label": "@mui/material/styles",
+        "description": "external package"
+      }
+    },
+    {
+      "id": "pkg:@mui/material/CssBaseline",
+      "type": "packageNode",
+      "position": {
+        "x": 20,
+        "y": 570
+      },
+      "data": {
+        "label": "@mui/material/CssBaseline",
+        "description": "external package"
+      }
+    },
+    {
+      "id": "pkg:@mui/material",
+      "type": "packageNode",
+      "position": {
+        "x": 20,
+        "y": 20
+      },
+      "data": {
+        "label": "@mui/material",
+        "description": "external package"
+      }
+    },
+    {
+      "id": "pkg:../assets/logo.png",
+      "type": "packageNode",
+      "position": {
+        "x": 20,
+        "y": 70
+      },
+      "data": {
+        "label": "../assets/logo.png",
+        "description": "external package"
+      }
+    },
+    {
+      "id": "pkg:@mui/icons-material/Menu",
+      "type": "packageNode",
+      "position": {
+        "x": 20,
+        "y": 120
+      },
+      "data": {
+        "label": "@mui/icons-material/Menu",
+        "description": "external package"
+      }
+    },
+    {
+      "id": "pkg:axios",
+      "type": "packageNode",
+      "position": {
+        "x": 20,
+        "y": 170
+      },
+      "data": {
+        "label": "axios",
+        "description": "external package"
+      }
+    },
+    {
+      "id": "pkg:react-dom/client",
+      "type": "packageNode",
+      "position": {
+        "x": 20,
+        "y": 220
+      },
+      "data": {
+        "label": "react-dom/client",
+        "description": "external package"
+      }
+    },
+    {
+      "id": "pkg:recharts",
+      "type": "packageNode",
+      "position": {
+        "x": 20,
+        "y": 270
+      },
+      "data": {
+        "label": "recharts",
+        "description": "external package"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-pkg:react",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "pkg:react",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-pkg:react-router-dom",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "pkg:react-router-dom",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react-router-dom"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx",
+      "animated": false,
+      "type": "import",
+      "data": {
+        "raw": "./components/AdminLogin"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx",
+      "animated": false,
+      "type": "import",
+      "data": {
+        "raw": "./pages/AddStudent"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx",
+      "animated": false,
+      "type": "import",
+      "data": {
+        "raw": "./pages/Attendance"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx",
+      "animated": false,
+      "type": "import",
+      "data": {
+        "raw": "./components/StudentList"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx",
+      "animated": false,
+      "type": "import",
+      "data": {
+        "raw": "./pages/PollSummary"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-pkg:@mui/material/styles",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "pkg:@mui/material/styles",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "@mui/material/styles"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-pkg:@mui/material/CssBaseline",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "pkg:@mui/material/CssBaseline",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "@mui/material/CssBaseline"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx-pkg:react",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx",
+      "target": "pkg:react",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx-pkg:react-router-dom",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx",
+      "target": "pkg:react-router-dom",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react-router-dom"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx-pkg:@mui/material",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx",
+      "target": "pkg:@mui/material",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "@mui/material"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx-pkg:../assets/logo.png",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx",
+      "target": "pkg:../assets/logo.png",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "../assets/logo.png"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx-pkg:react",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "target": "pkg:react",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx-pkg:@mui/material",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "target": "pkg:@mui/material",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "@mui/material"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx-pkg:@mui/icons-material/Menu",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "target": "pkg:@mui/icons-material/Menu",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "@mui/icons-material/Menu"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx-pkg:react-router-dom",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "target": "pkg:react-router-dom",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react-router-dom"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx-pkg:../assets/logo.png",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "target": "pkg:../assets/logo.png",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "../assets/logo.png"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx-pkg:react",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx",
+      "target": "pkg:react",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx-pkg:axios",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx",
+      "target": "pkg:axios",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "axios"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx-pkg:react-router-dom",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx",
+      "target": "pkg:react-router-dom",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react-router-dom"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx-pkg:@mui/material",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx",
+      "target": "pkg:@mui/material",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "@mui/material"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "animated": false,
+      "type": "import",
+      "data": {
+        "raw": "../components/Navbar"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx-pkg:react",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx",
+      "target": "pkg:react",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx-pkg:react-dom/client",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx",
+      "target": "pkg:react-dom/client",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react-dom/client"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "animated": false,
+      "type": "import",
+      "data": {
+        "raw": "./App"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx-pkg:react-router-dom",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx",
+      "target": "pkg:react-router-dom",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react-router-dom"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx-pkg:react",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx",
+      "target": "pkg:react",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx-pkg:axios",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx",
+      "target": "pkg:axios",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "axios"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx-pkg:@mui/material",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx",
+      "target": "pkg:@mui/material",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "@mui/material"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "animated": false,
+      "type": "import",
+      "data": {
+        "raw": "../components/Navbar"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx-pkg:react",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx",
+      "target": "pkg:react",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx-pkg:axios",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx",
+      "target": "pkg:axios",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "axios"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx-pkg:react-router-dom",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx",
+      "target": "pkg:react-router-dom",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react-router-dom"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx-pkg:@mui/material",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx",
+      "target": "pkg:@mui/material",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "@mui/material"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "animated": false,
+      "type": "import",
+      "data": {
+        "raw": "../components/Navbar"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx-pkg:react",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx",
+      "target": "pkg:react",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "react"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx-pkg:@mui/material",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx",
+      "target": "pkg:@mui/material",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "@mui/material"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx-pkg:recharts",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx",
+      "target": "pkg:recharts",
+      "animated": false,
+      "type": "import-package",
+      "data": {
+        "raw": "recharts"
+      }
+    },
+    {
+      "id": "imp-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "animated": false,
+      "type": "import",
+      "data": {
+        "raw": "../components/Navbar"
+      }
+    },
+    {
+      "id": "uses-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx-AdminLogin",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\AdminLogin.jsx",
+      "animated": true,
+      "type": "uses-component",
+      "data": {
+        "name": "AdminLogin"
+      }
+    },
+    {
+      "id": "uses-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx-AddStudent",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx",
+      "animated": true,
+      "type": "uses-component",
+      "data": {
+        "name": "AddStudent"
+      }
+    },
+    {
+      "id": "uses-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx-Attendance",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx",
+      "animated": true,
+      "type": "uses-component",
+      "data": {
+        "name": "Attendance"
+      }
+    },
+    {
+      "id": "uses-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx-StudentList",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx",
+      "animated": true,
+      "type": "uses-component",
+      "data": {
+        "name": "StudentList"
+      }
+    },
+    {
+      "id": "uses-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx-PollSummary",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx",
+      "animated": true,
+      "type": "uses-component",
+      "data": {
+        "name": "PollSummary"
+      }
+    },
+    {
+      "id": "uses-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx-Navbar",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\StudentList.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "animated": true,
+      "type": "uses-component",
+      "data": {
+        "name": "Navbar"
+      }
+    },
+    {
+      "id": "uses-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx-App",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\main.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\App.jsx",
+      "animated": true,
+      "type": "uses-component",
+      "data": {
+        "name": "App"
+      }
+    },
+    {
+      "id": "uses-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx-Navbar",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\AddStudent.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "animated": true,
+      "type": "uses-component",
+      "data": {
+        "name": "Navbar"
+      }
+    },
+    {
+      "id": "uses-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx-Navbar",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\Attendance.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "animated": true,
+      "type": "uses-component",
+      "data": {
+        "name": "Navbar"
+      }
+    },
+    {
+      "id": "uses-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx-C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx-Navbar",
+      "source": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\pages\\PollSummary.jsx",
+      "target": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\frontend\\src\\components\\Navbar.jsx",
+      "animated": true,
+      "type": "uses-component",
+      "data": {
+        "name": "Navbar"
+      }
+    }
+  ]
+}

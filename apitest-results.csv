@@ -1,0 +1,3 @@
+METHOD,PATH,STATUS,TIME,ERROR
+post,/profile,200,,
+get,/profile,200,,
