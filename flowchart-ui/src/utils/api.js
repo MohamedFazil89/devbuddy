@@ -30,8 +30,47 @@ export async function fetchExplanation(code) {
   return res.json();
 }
 
+// ✅ AI Suggestion (complexity + one-line improvement)
+export async function fetchSuggestion(code) {
+  const res = await fetch(`${API_BASE}/api/suggest`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error("❌ Backend suggestion error:", text);
+    throw new Error("Failed to fetch suggestion");
+  }
+
+  const data = await res.json();
+  console.log("📩 Suggestion response from backend:", data);
+  return data;
+}
+
+// ✅ AI Refactor (returns optimized code only)
+export async function fetchRefactor(code) {
+  const res = await fetch(`${API_BASE}/api/refactor`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error("❌ Backend refactor error:", text);
+    throw new Error("Failed to fetch refactored code");
+  }
+
+  const data = await res.json();
+  console.log("📩 Refactor response from backend:", data);
+  return data; // { refactoredCode: "optimized code here" }
+}
+
+
 export async function updateCode(filePath, newCode) {
-  console.log("🔧 updateCode called:", filePath); // debug log
+  console.log("🔧 updateCode called:", filePath);
   const res = await fetch(`${API_BASE}/api/code/update`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -48,7 +87,7 @@ export async function updateCode(filePath, newCode) {
 }
 
 export async function undoCode(filePath) {
-  console.log("↩️ undoCode called:", filePath); // debug log
+  console.log("↩️ undoCode called:", filePath);
   const res = await fetch(`${API_BASE}/api/code/undo`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -62,4 +101,11 @@ export async function undoCode(filePath) {
   }
 
   return res.json();
+}
+
+
+export async function fetchFileFunctions(fileId) {
+  const res = await fetch(`${API_BASE}/api/functions?file=${encodeURIComponent(fileId)}`);
+  const data = await res.json();
+  return data.functions;
 }

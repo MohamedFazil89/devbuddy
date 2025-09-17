@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { FolderTree } from "lucide-react";
-import { fetchProjectFlow } from "../utils/api"; // fetch all files
+import { FolderTree } from "lucide-react"; // Folder icon
+import { fetchProjectFlow, fetchFileFlow } from "../utils/api"; // API calls
+import { FaReact, FaJsSquare, FaPython, FaFileAlt } from "react-icons/fa"; // File type icons
 
-export default function Sidebar({ onSelectFile }) {
-  const [files, setFiles] = useState([]);
+export default function Sidebar({ view, activeFile, onSelectFile, onSelectSymbol, onBack }) {
+  const [files, setFiles] = useState([]);   // Project files
+  const [symbols, setSymbols] = useState([]); // Functions in the selected file
 
+  // ✅ Load project files once when component mounts
   useEffect(() => {
     fetchProjectFlow()
       .then((data) => {
-        const fileNodes = (data.nodes || []).filter(n => n.type === "fileNode");
+        const fileNodes = (data.nodes || [])
+          .filter((n) => n.type === "fileNode")
+          .map((n) => ({
+            id: n.id,
+            data: n.data,
+          }));
         setFiles(fileNodes);
       })
       .catch((err) => {
@@ -16,40 +24,121 @@ export default function Sidebar({ onSelectFile }) {
       });
   }, []);
 
+  // ✅ Watch for changes to activeFile and fetch its functions
+  useEffect(() => {
+    if (!activeFile) {
+      setSymbols([]); // Clear symbols when no file is selected
+      return;
+    }
+
+    const loadFileFunctions = async () => {
+      try {
+        let fileId = activeFile.id;
+
+        // Extract last two parts of the path if needed
+        const match = fileId.match(/([^/]+\/[^/]+)$/);
+        if (match) {
+          fileId = match[1];
+        }
+
+        const flow = await fetchFileFlow(fileId);
+        const funcs = (flow.nodes || [])
+          .filter((n) => n.type !== "fileNode")
+          .map((n) => ({
+            id: n.id,
+            label: n.data?.label || n.id,
+            data: n.data,
+          }));
+        setSymbols(funcs);
+      } catch (err) {
+        console.error("Error loading file functions:", err);
+        setSymbols([]); // Clear on error
+      }
+    };
+
+    loadFileFunctions();
+  }, [activeFile]);
+
+  // ✅ Handle file selection
+  const openFile = (file) => {
+    let fileId = file.id;
+    const match = fileId.match(/([^/]+\/[^/]+)$/);
+    if (match) {
+      fileId = match[1];
+    }
+    const correctedFile = {
+      ...file,
+      id: fileId,
+    };
+    onSelectFile && onSelectFile(correctedFile);
+  };
+
+  // ✅ Choose icon based on file extension
+  const getFileIcon = (fileName) => {
+    if (!fileName) return <FaFileAlt color="#9CA3AF" />;
+    const ext = fileName.split(".").pop();
+    switch (ext) {
+      case "jsx":
+      case "tsx":
+        return <FaReact color="#61dafb" />;
+      case "js":
+        return <FaJsSquare color="#f7df1e" />;
+      case "py":
+        return <FaPython color="#3776ab" />;
+      default:
+        return <FaFileAlt color="#9CA3AF" />;
+    }
+  };
+
   return (
     <aside className="sidebar" style={{ width: "250px", color: "#fff", height: "100vh", overflowY: "auto" }}>
-      <div className="sidebar-header" style={{ display: "flex", alignItems: "center", padding: "8px" }}>
-        <FolderTree size={20} />
-        <span style={{ marginLeft: "8px", fontWeight: "bold" }}>Project</span>
+      
+      {/* Sidebar header */}
+      <div className="sidebar-header" style={{ display: "flex", alignItems: "center", padding: "8px", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <FolderTree size={20} />
+          <span style={{ marginLeft: "8px", fontWeight: "bold" }}>
+            {view === "file" ? "Functions" : "Project"}
+          </span>
+        </div>
+        {view === "file" && (
+          <button onClick={onBack} style={{ background: "transparent", border: "none", color: "#aaa", cursor: "pointer", fontSize: "12px" }}>
+            ← Back
+          </button>
+        )}
       </div>
+
+      {/* Sidebar body showing files or functions */}
       <div className="sidebar-body" style={{ padding: "2px" }}>
-        {files.length === 0 ? (
-          <p style={{ color: "#aaa" }}>No files available.</p>
-        ) : (
+        {view === "project" ? (
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {files.map((file) => {
               const label = file.data?.label || file.id.split("/").pop();
-              const rel = file.data?.rel || file.id.split("/").pop();
-
               return (
-                <div key={file.id} onClick={() => onSelectFile(file)}
-                  style={{
-                    padding: "8px 1px",
-                    cursor: "pointer",
-                  }}>
-                  <li>
-                    {label}
-
-                  </li>
-                  {/* <p style={{
-                    fontSize:"6px",
-                    color:"GrayText"
-                  }}>{rel}</p> */}
-                </div>
-
+                <li key={file.id} onClick={() => openFile(file)} style={{ padding: "8px 4px", cursor: "pointer", display: "flex", alignItems: "center", gap: "6px" }}>
+                  {getFileIcon(label)}
+                  <span>{label}</span>
+                </li>
               );
             })}
           </ul>
+        ) : (
+          <div>
+            <h4 style={{ margin: "8px 0", paddingLeft: "8px" }}>
+              {activeFile?.data?.label || activeFile?.id.split("/").pop()}
+            </h4>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+              {symbols.length === 0 ? (
+                <p style={{ color: "#aaa", paddingLeft: "8px" }}>No functions found.</p>
+              ) : (
+                symbols.map((sym) => (
+                  <li key={sym.id} onClick={() => onSelectSymbol && onSelectSymbol(sym)} style={{ padding: "6px 8px", cursor: "pointer", fontSize: "13px" }}>
+                    ↳ {sym.label}
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
         )}
       </div>
     </aside>

@@ -19,36 +19,35 @@ export default function FileFlow({ fileNode, onSelectSymbol }) {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   useEffect(() => {
-    if (!fileNode) return;
-    const path = fileNode.id || fileNode.data?.relPath || fileNode.data?.label;
+    if (!fileNode?.id) return;
+
+    let path = fileNode.id;
+    const match = path.match(/([^/]+\/[^/]+)$/); // ✅ corrected regex
+    if (match) {
+      path = match[1];
+    }
+
     fetchFileFlow(path)
       .then((d) => {
         const subNodes = (d.nodes || []).map((n) => ({
           ...n,
           type: n.type === "fileNode" ? "fileNode" : "small",
         }));
-        const subEdges = d.edges || [];
         setNodes(subNodes);
-        setEdges(subEdges);
+        setEdges(d.edges || []);
       })
-      .catch((err) => console.error(err));
-  }, [fileNode, setNodes, setEdges]);
+      .catch((err) => console.error("Error loading file flow:", err));
+  }, [fileNode?.id, setNodes, setEdges]);
 
-  const onNodeClick = useCallback(
-    (_, node) => {
-      if (node.type !== "fileNode") {
-        onSelectSymbol && onSelectSymbol(node);
-      } else {
-        onSelectSymbol && onSelectSymbol(null); // show full file
-      }
-    },
-    [onSelectSymbol]
-  );
+  const onNodeClick = useCallback((_, node) => {
+    if (node.type !== "fileNode") {
+      onSelectSymbol && onSelectSymbol(node);
+    } else {
+      onSelectSymbol && onSelectSymbol(null);
+    }
+  }, [onSelectSymbol]);
 
-  const onConnect = useCallback(
-    (params) => setEdges((es) => addEdge(params, es)),
-    [setEdges]
-  );
+  const onConnect = useCallback((params) => setEdges((es) => addEdge(params, es)), [setEdges]);
 
   return (
     <ReactFlow
