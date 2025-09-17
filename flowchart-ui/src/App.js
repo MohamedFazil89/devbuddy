@@ -17,14 +17,16 @@ export default function App() {
   const [editorCode, setEditorCode] = useState("");
   const [editorFilePath, setEditorFilePath] = useState("");
 
-  const handleEdit = (filePath, code) => {
-    if (!filePath && activeFile) {
-      filePath = activeFile.data?.absPath || activeFile.data?.relPath;
-    }
-    setEditorFilePath(filePath);
-    setEditorCode(code);
-    setIsEditorOpen(true);
-  };
+  // Open editor from sidebar panel
+ const handleEdit = (filePath, code) => {
+  if (!filePath && activeFile) {
+    filePath = activeFile.data?.absPath || activeFile.data?.relPath;
+  }
+  setEditorFilePath(filePath);
+  setEditorCode(code);
+  setIsEditorOpen(true);
+};
+
 
   const handleSave = async () => {
     await updateCode(editorFilePath, editorCode);
@@ -41,19 +43,12 @@ export default function App() {
 
   const handleClose = () => {
     if (activeSymbol) {
-      setActiveSymbol(null);
+      setActiveSymbol(null); // close function
     } else {
       setView("project");
       setActiveFile(null);
     }
   };
-
-  // ✅ Ensure view switches when activeFile is set
-  useEffect(() => {
-    if (activeFile) {
-      setView("file");
-    }
-  }, [activeFile]);
 
   return (
     <div className="app-root">
@@ -62,6 +57,7 @@ export default function App() {
         activeFile={activeFile}
         onSelectFile={(file) => {
           setActiveFile(file);
+          setView("file");
         }}
         onSelectSymbol={(sym) => setActiveSymbol(sym)}
         onBack={() => {
@@ -78,7 +74,7 @@ export default function App() {
             setActiveFile(null);
             setActiveSymbol(null);
           }}
-          showBack={view === "file"}
+          showBack={view === "file"} // ✅ only show in file-level
         />
 
         <div className="canvas-area">
@@ -86,18 +82,15 @@ export default function App() {
             <ProjectFlow
               onFileClick={(fileNode) => {
                 setActiveFile(fileNode);
+                setView("file");
               }}
             />
           ) : (
-            activeFile && (
-              <FileFlow
-                fileNode={activeFile}
-                onSelectSymbol={setActiveSymbol}
-              />
-            )
+            <FileFlow fileNode={activeFile} onSelectSymbol={setActiveSymbol} />
           )}
         </div>
 
+        {/* Sidebar file details */}
         <FileDetailsPanel
           symbol={activeSymbol}
           fileNode={activeFile}
@@ -105,6 +98,7 @@ export default function App() {
           onEdit={handleEdit}
         />
 
+        {/* Bottom editor drawer */}
         <CodeEditorDrawer
           isOpen={isEditorOpen}
           code={editorCode}

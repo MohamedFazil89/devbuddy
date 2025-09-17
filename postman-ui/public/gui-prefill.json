@@ -3,7 +3,7 @@
   "methods": [
     "post"
   ],
-  "file": "C:\\Users\\Zzz\\OneDrive\\Desktop\\dev tools\\cli-api-tester\\sample\\index.js",
+  "file": "C:\\Users\\SUHAIL\\Desktop\\code-complexity\\devbuddy-main (1)\\devbuddy-main\\sample\\index.js",
   "instruction": "test my profile api",
   "baseUrl": null,
   "body": "{\n  \"userId\": \"12345\",\n  \"token\": \"my-secret-token-987\"\n}",

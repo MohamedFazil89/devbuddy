@@ -9,8 +9,3 @@ fetchQr = async () => {
       setQrMessage("QR code is only available between 1 PM and 3 PM");
     }
   }
-
-function demo(){
-  console.log("DEF")
-  return 0
-}

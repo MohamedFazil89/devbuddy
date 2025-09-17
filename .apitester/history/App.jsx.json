@@ -42,5 +42,9 @@
   {
     "timestamp": 1757989231206,
     "code": "import React from \"react\";\r\nimport { Routes, Route } from \"react-router-dom\";\r\nimport AdminLogin from \"./components/AdminLogin\";\r\nimport AddStudent from \"./pages/AddStudent\";\r\nimport Attendance from \"./pages/Attendance\";\r\nimport StudentList from \"./components/StudentList\";\r\nimport PollSummary from \"./pages/PollSummary\";\r\nimport { ThemeProvider, createTheme } from \"@mui/material/styles\";\r\nimport CssBaseline from \"@mui/material/CssBaseline\";\r\n\r\nconst theme = createTheme({\r\n  palette: {\r\n    primary: {\r\n      main: \"#007BFF\",\r\n    },\r\n    secondary: {\r\n      main: \"#28A745\",\r\n    },\r\n  },\r\n});\r\n\r\nfunction App() {\r\n  return (\r\n    <ThemeProvider theme={theme}>\r\n      <CssBaseline />\r\n      <Routes>\r\n        <Route path=\"/\" element={<AdminLogin />} />\r\n        <Route path=\"/dashboard\" element={<AddStudent />} />\r\n        <Route path=\"/attendance\" element={<Attendance />} />\r\n        <Route path=\"/students\" element={<StudentList />} />\r\n        <Route path=\"/poll-summary\" element={<PollSummary />} />\r\n      </Routes>\r\n    </ThemeProvider>\r\n  );\r\n}\r\n\r\nexport default App;"
+  },
+  {
+    "timestamp": 1758038021412,
+    "code": "function App() {\r\n  return (\r\n    <ThemeProvider theme={theme}>\r\n      <CssBaseline />\r\n      <Routes>\r\n        <Route path=\"/\" element={<AdminLogin />} />\r\n        <Route path=\"/dashboard\" element={<AddStudent />} />\r\n        <Route path=\"/attendance\" element={<Attendance />} />\r\n        <Route path=\"/students\" element={<StudentList />} />\r\n        <Route path=\"/poll-summary\" element={<PollSummary />} />\r\n      </Routes>\r\n    </ThemeProvider>\r\n  );\r\n}"
   }
 ]
