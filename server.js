@@ -85,47 +85,53 @@ const openai = new OpenAI({
 // });
 
 // ✅ AI Suggestion (always return JSON object)
-// app.post("/api/suggest", async (req, res) => {
-//   try {
-//     const { code } = req.body;
-//     if (!code) return res.status(400).json({ error: "Missing code snippet" });
+app.post("/api/suggest", async (req, res) => {
+  try {
+    const { code } = req.body;
+    if (!code) return res.status(400).json({ error: "Missing code snippet" });
 
-//     const response = await openai.chat.completions.create({
-//       model: "gpt-4o-mini",
-//       messages: [
-//         {
-//           role: "system",
-//           content:
-//             "You are a code reviewer. Respond ONLY in valid JSON like this:\n" +
-//             '{"suggestion": "Current: Time O(?), Space O(?). Suggestion: <one-line improvement>"}\n' +
-//             "No extra text, no markdown, only JSON.",
-//         },
-//         {
-//           role: "user",
-//           content: code,
-//         },
-//       ],
-//       max_tokens: 100,
-//     });
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are a strict code reviewer. Analyze the given code for time/space complexity." +
+            "\nIf the code is already optimal for small/medium projects, respond in this JSON format:" +
+            '\n{"suggestion": "Current: Time O(?), Space O(?). ✅ This is already optimal for your project. Future Enhancement: AI suggests <approach> but use your code for now."}' +
+            "\nIf the code can be improved, respond in this JSON format:" +
+            '\n{"suggestion": "Current: Time O(?), Space O(?). Suggestion: Use <approach> for better efficiency."}' +
+            "\nAlways respond ONLY in valid JSON. No explanations, no markdown.",
+        },
+        {
+          role: "user",
+          content: code,
+        },
+      ],
+      max_tokens: 150,
+    });
 
-//     const text = response.choices[0].message.content.trim();
+    const text = response.choices[0].message.content.trim();
 
-//     // Ensure valid JSON response
-//     let suggestionObj;
-//     try {
-//       suggestionObj = JSON.parse(text);
-//     } catch (e) {
-//       console.error("⚠️ Could not parse AI response, fallback:", text);
-//       suggestionObj = { suggestion: text };
-//     }
+    // Parse safe JSON
+    let suggestionObj;
+    try {
+      suggestionObj = JSON.parse(text);
+    } catch (e) {
+      console.error("⚠️ Could not parse AI response, fallback:", text);
+      suggestionObj = { suggestion: text };
+    }
 
-//     console.log("✨ Final Suggestion Object:", suggestionObj);
-//     res.json(suggestionObj);
-//   } catch (err) {
-//     console.error("❌ Error in /api/suggest:", err.response?.data || err.message);
-//     res.status(500).json({ error: "Failed to suggest improvements" });
-//   }
-// });
+    // 🔍 Logs
+    console.log("📥 Original Code:", code);
+    console.log("✨ AI Suggestion Object:", suggestionObj);
+
+    res.json(suggestionObj);
+  } catch (err) {
+    console.error("❌ Error in /api/suggest:", err.response?.data || err.message);
+    res.status(500).json({ error: "Failed to suggest improvements" });
+  }
+});
 
 // ✅ AI Refactor API (analyzes + optimizes, returns only best code)
 // ✅ AI Refactor API (analyzes + optimizes, returns only best code)
