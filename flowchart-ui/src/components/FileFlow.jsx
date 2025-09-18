@@ -46,7 +46,7 @@ export default function FileFlow({ fileNode, onSelectSymbol, githubFiles }) {
         setEdges(d.edges || []);
       })
       .catch((err) => console.error(err));
-  }, [fileNode, githubFiles, setNodes, setEdges]);
+  }, [fileNode, setNodes, setEdges]);
 
   const onNodeClick = useCallback((_, node) => {
     if (node.type !== "fileNode") {
