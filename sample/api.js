@@ -97,3 +97,21 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Dummy API running at http://localhost:${PORT}`);
 });
+
+// ✅ GitHub Pull
+export async function githubPull(owner, repo, branch = "main") {
+  const res = await fetch(`${API_BASE}/api/github/pull?owner=${owner}&repo=${repo}&branch=${branch}`);
+  if (!res.ok) throw new Error(await res.text());
+  return res.json(); // { files }
+}
+
+// ✅ GitHub Push
+export async function githubPush({ owner, repo, path, message, content, sha }) {
+  const res = await fetch(`${API_BASE}/api/github/push`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ owner, repo, path, message, content, sha }),
+  });
+  if (!res.ok) throw new Error(await res.text());
+  return res.json(); // { success, commit }
+}

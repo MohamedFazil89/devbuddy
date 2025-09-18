@@ -9,6 +9,7 @@ export default function FileDetailsPanel({
   fileNode,
   onClose,
   onEdit, // opens CodeEditorDrawer with path + code
+  onSelectFile, // ✅ NEW: pass selected file + code to parent (HeaderBar)
 }) {
   const [explanation, setExplanation] = useState("");
   const [suggestion, setSuggestion] = useState("");
@@ -16,22 +17,25 @@ export default function FileDetailsPanel({
   const [loadingSuggest, setLoadingSuggest] = useState(false);
   const [loadingRefactor, setLoadingRefactor] = useState(false);
 
-const data = symbol ? symbol.data : fileNode?.data;
-const filePath = fileNode?.data?.relPath || fileNode?.data?.absPath || "unknown";
+  const data = symbol ? symbol.data : fileNode?.data;
+  const filePath = fileNode?.data?.relPath || fileNode?.data?.absPath || "unknown";
+  const fileCode = data?.code || data?.snippet;
 
   useEffect(() => {
     if (data) {
       handleExplain();
       handleSuggest();
+      // ✅ Tell parent which file & code is currently selected
+      onSelectFile && onSelectFile(filePath, fileCode);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [symbol, fileNode]);
 
   const handleExplain = async () => {
-    if (!data?.code && !data?.snippet) return;
+    if (!fileCode) return;
     setLoadingExplain(true);
     try {
-      const result = await fetchExplanation(data.code || data.snippet);
+      const result = await fetchExplanation(fileCode);
       setExplanation(result.explanation);
     } catch (err) {
       console.error("❌ Explanation fetch error:", err);
@@ -42,10 +46,10 @@ const filePath = fileNode?.data?.relPath || fileNode?.data?.absPath || "unknown"
   };
 
   const handleSuggest = async () => {
-    if (!data?.code && !data?.snippet) return;
+    if (!fileCode) return;
     setLoadingSuggest(true);
     try {
-      const result = await fetchSuggestion(data.code || data.snippet);
+      const result = await fetchSuggestion(fileCode);
       setSuggestion(result.suggestion);
     } catch (err) {
       console.error("❌ Suggestion fetch error:", err);
@@ -57,11 +61,11 @@ const filePath = fileNode?.data?.relPath || fileNode?.data?.absPath || "unknown"
 
   // ✅ Apply refactor → calls backend and opens editor with optimized code
   const handleRefactor = async () => {
-    if (!data?.code && !data?.snippet) return;
+    if (!fileCode) return;
     setLoadingRefactor(true);
     try {
-      const result = await fetchRefactor(data.code || data.snippet);
-      onEdit(data?.absPath || data?.relPath, result.refactoredCode);
+      const result = await fetchRefactor(fileCode);
+      onEdit(filePath, result.refactoredCode);
     } catch (err) {
       console.error("❌ Refactor fetch error:", err);
       alert("❌ Failed to refactor code.");
@@ -75,6 +79,7 @@ const filePath = fileNode?.data?.relPath || fileNode?.data?.absPath || "unknown"
     const currentMatch = text.match(/Current:([^.]*)/i);
     const betterMatch = text.match(/Better:([^.]*)/i);
     const suggestMatch = text.match(/Suggestion:(.*)/i);
+    const optimalMatch = text.match(/✅(.*)/i);
 
     return (
       <div>
@@ -93,10 +98,17 @@ const filePath = fileNode?.data?.relPath || fileNode?.data?.absPath || "unknown"
             <strong>Suggestion:</strong> {suggestMatch[1].trim()}
           </p>
         )}
-        {!currentMatch && !suggestMatch && <p>{text}</p>}
+        {optimalMatch && (
+          <p style={{ color: "limegreen", fontWeight: "bold" }}>
+            ✅ {optimalMatch[1].trim()}
+          </p>
+        )}
+        {!currentMatch && !suggestMatch && !optimalMatch && <p>{text}</p>}
       </div>
     );
   };
+
+  const isOptimal = suggestion.includes("✅");
 
   return (
     <AnimatePresence>
@@ -112,9 +124,7 @@ const filePath = fileNode?.data?.relPath || fileNode?.data?.absPath || "unknown"
           <div className="panel-header">
             <div>
               <h3>{data?.label || data?.name || "File"}</h3>
-              <div className="muted">
-                {filePath}
-              </div>
+              <div className="muted">{filePath}</div>
             </div>
             <button onClick={onClose} className="close-btn">
               ✖
@@ -125,18 +135,11 @@ const filePath = fileNode?.data?.relPath || fileNode?.data?.absPath || "unknown"
           <div className="card">
             <h4 className="card-title">Code</h4>
             <pre>
-              <code className="language-js">
-                {data?.code || data?.snippet}
-              </code>
+              <code className="language-js">{fileCode}</code>
             </pre>
             <button
               className="edit-btn"
-              onClick={() =>
-                onEdit(
-                  data?.absPath || data?.relPath,
-                  data?.code || data?.snippet
-                )
-              }
+              onClick={() => onEdit(filePath, fileCode)}
             >
               ✏️ Edit Code
             </button>
@@ -163,22 +166,24 @@ const filePath = fileNode?.data?.relPath || fileNode?.data?.absPath || "unknown"
             ) : (
               renderSuggestion(suggestion)
             )}
-            <button
-              className="apply-btn"
-              onClick={handleRefactor}
-              disabled={loadingRefactor}
-              style={{
-                marginTop: "10px",
-                backgroundColor: "#16a34a", // ✅ green
-                color: "#fff",
-                border: "none",
-                padding: "8px 14px",
-                borderRadius: "6px", // ✅ curved
-                cursor: "pointer",
-              }}
-            >
-              {loadingRefactor ? "⏳ Applying..." : "</>  Apply "}
-            </button>
+            {!isOptimal && (
+              <button
+                className="apply-btn"
+                onClick={handleRefactor}
+                disabled={loadingRefactor}
+                style={{
+                  marginTop: "10px",
+                  backgroundColor: "#16a34a",
+                  color: "#fff",
+                  border: "none",
+                  padding: "8px 14px",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                }}
+              >
+                {loadingRefactor ? "⏳ Applying..." : "</> Apply Refactor"}
+              </button>
+            )}
           </div>
         </motion.aside>
       )}
